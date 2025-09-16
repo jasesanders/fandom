@@ -1,69 +1,34 @@
-# React + TypeScript + Vite
+# Fandom UI Sandbox
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Vite + React + Tailwind playground for experimenting with UI ideas before they ship. The repository is intentionally lightweight so teammates can explore patterns, iterate on tokens, and share snippets quickly.
 
-Currently, two official plugins are available:
+## Getting started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
+2. **Start the dev server**
+   ```bash
+   npm run dev
+   ```
+   The app opens to the playground so you can tinker with example components right away.
 
-## Expanding the ESLint configuration
+For the best experience use the active LTS version of Node.js (v18+) and enable your editor's ESLint + TypeScript integrations.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Available scripts
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Runs Vite's development server with hot module reloading. |
+| `npm run build` | Type-checks the project and outputs a production build to `dist/`. |
+| `npm run lint` | Lints all source files using the shared ESLint configuration. |
+| `npm run preview` | Serves the production build locally for smoke testing. |
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Playground overview
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- The primary sandbox lives in [`src/pages/Playground.tsx`](src/pages/Playground.tsx).
+- It renders a grid of buttons, cards, and typography samples styled with Tailwind utility classes.
+- Update this page as you experiment with new design tokens, interaction states, or documentation snippets.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Use the navigation in the header to jump between the overview hero and the playground. When you are ready to promote a component into the product, lift the relevant patterns into the feature's module.
